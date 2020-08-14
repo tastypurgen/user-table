@@ -2,6 +2,7 @@
 const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const db = require('./services/db');
 
 dotenv.config({ path: './.env' });
@@ -12,6 +13,7 @@ const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.set('view engine', 'hbs');
 

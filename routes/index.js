@@ -1,9 +1,14 @@
 const express = require('express');
 const authService = require('../services/auth');
+const db = require('../services/db');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
+  db.query('SELECT * from users', (err, results) => {
+    console.log(results[0]);
+  });
+
   res.render('index');
 });
 
@@ -16,5 +21,7 @@ router.post('/register', authService.register);
 router.get('/login', (req, res) => {
   res.render('login');
 });
+
+router.post('/login', authService.login);
 
 module.exports = router;
