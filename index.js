@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const path = require('path');
 const express = require('express');
 const mysql = require('mysql');
@@ -16,6 +17,8 @@ const db = mysql.createConnection({
 
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 app.set('view engine', 'hbs');
 
@@ -24,13 +27,8 @@ db.connect((err) => {
   else console.log('MySql connected');
 });
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
-app.get('/register', (req, res) => {
-  res.render('register');
-});
+// Routes
+app.use('/', require('./routes/index'));
 
 app.listen(process.env.PORT || 5500, () => {
   console.log('Server started...');
