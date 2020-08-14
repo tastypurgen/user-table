@@ -32,3 +32,8 @@ nav li a:hover {
   color: yellow;
   text-decoration: none;
 }
+
+th,
+td {
+  padding: 2px 4px;
+}

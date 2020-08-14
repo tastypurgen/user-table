@@ -15,12 +15,29 @@
   <div class="jumbotron">
     <h1 class="display-4">User Table</h1>
 
-    <% results.forEach(result => { %>
-    <h4><%= result.email %></h4>
-    <% }) %>
-
-    <table>
-
+    <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Registered</th>
+          <th>Last seen</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% results.forEach(result => { %>
+        <tr>
+          <td><%= result.id %></td>
+          <td><%= result.name %></td>
+          <td><%= result.email %></td>
+          <td><%= result.registerDate.toLocaleDateString() %></td>
+          <td><%= result.loginDate.toLocaleDateString() %></td>
+          <td><%= result.status %></td>
+        </tr>
+        <% }) %>
+      </tbody>
     </table>
   </div>
 </div>

@@ -36,7 +36,6 @@ exports.login = async (req, res) => {
     if (!email || !password) return res.status(400).render('login', { message: 'Invalid credentials' });
 
     db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
-      console.log('results: ', results);
       if (!results || !(await bcrypt.compare(password, results[0].password))) {
         res.status(401).render('login', { message: 'Invalid credentials' });
       } else {

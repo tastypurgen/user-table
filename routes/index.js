@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   db.query('SELECT * from users', (err, results) => {
-    console.log(results);
     res.render('index', { results });
   });
 });
