@@ -8,16 +8,15 @@ const router = express.Router();
 
 initializePassport(
   passport,
-  (email) => {
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAaaaa');
-    return {
-      id: 5,
-      name: '1',
-      email: '1@1',
-      password: '$2a$08$Ny.PVCzyaI5VxPA.0T65POFFGwzOlvbYySFC4dS4gGN5TksSs/qxm',
-      status: 0,
-    };
-  },
+
+  async (email) => new Promise((resolve, reject) => db.query(
+    'SELECT * FROM users WHERE email = ?',
+    [email],
+    (err, results) => {
+      if (err) reject(err);
+      resolve({ ...results[0] });
+    },
+  )),
   () => ({
     id: 5,
     name: '1',
