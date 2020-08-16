@@ -10,3 +10,22 @@
 </head>
 
 <body>
+
+  <nav>
+    <h4>User Table</h4>
+
+    <% if (global.name) { %>
+    <h4 <%= name %></h4>
+      <% } else { %>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+          <a href="/login">Login</a>
+          <a href="/register">Register</a>
+          <form action="/logout?_method=DELETE" method="POST">
+            <button type="submit">Log Out</button>
+          </form>
+        </li>
+      </ul>
+      <% }  %>
+  </nav>
