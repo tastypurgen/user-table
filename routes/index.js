@@ -13,6 +13,7 @@ initializePassport(
     [email],
     (err, results) => {
       if (err) reject(err);
+      db.query(`UPDATE users SET loginDate = '${new Date().toISOString().slice(0, 19).replace('T', ' ')}' WHERE id = ?`, [results[0].id], (err, results) => { });
       resolve({ ...results[0] });
     },
   )),

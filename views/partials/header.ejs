@@ -15,15 +15,14 @@
     <h4>User Table</h4>
 
     <% if (locals.name) { %>
-    <h2>Hello, <%= locals.name %>!</h2>
     <form action="/logout?_method=DELETE" method="POST">
-      <button type="submit">Log Out</button>
+      <button type="submit" class="btn btn-light">Log Out</button>
     </form>
     <% } else { %>
     <ul>
       <li>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
+        <a href="/login" class="btn btn-light">Login</a>
+        <a href="/register" class="btn btn-light">Register</a>
       </li>
     </ul>
     <% }  %>
