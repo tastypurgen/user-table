@@ -2,32 +2,37 @@
 
 <div class="container mt-4">
   <div class="jumbotron">
-    <h1 class="display-4" style="text-align: center;">User Table</h1>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Registered</th>
-          <th>Last seen</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% results.forEach(result => { %>
-        <tr>
-          <td><%= result.id %></td>
-          <td><%= result.name %></td>
-          <td><%= result.email %></td>
-          <td><%= result.registerDate.toLocaleDateString() %></td>
-          <td><%= result.loginDate.toLocaleDateString() %></td>
-          <td><%= result.status %></td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
+    <form action="/del" method="post" style="text-align: center;">
+      <button class="btn btn-success disabled w-25 mb-2">Unblock</button>
+      <button class="btn btn-warning disabled w-25 mb-2">Block</button>
+      <button class="btn btn-danger w-25 mb-2">Delete</button>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Registered</th>
+            <th>Last seen</th>
+            <th>Status</th>
+            <th>Select</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% results.forEach(result => { %>
+          <tr>
+            <td><%= result.id %></td>
+            <td><%= result.name %></td>
+            <td><%= result.email %></td>
+            <td><%= result.registerDate.toLocaleDateString() %></td>
+            <td><%= result.loginDate.toLocaleDateString() %></td>
+            <td><%= result.status %></td>
+            <td> <input type="checkbox" name="<%= result.id %>" id="<%= result.id %>"> </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </form>
   </div>
 </div>
 

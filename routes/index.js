@@ -67,4 +67,15 @@ router.delete('/logout', (req, res) => {
   res.redirect('/login');
 });
 
+router.post('/del', (req, res) => {
+  const checkedArray = Object.keys(req.body);
+  checkedArray.forEach((item) => {
+    db.query('DELETE FROM users WHERE id = ?', [+item], (err, res) => {
+      console.log(err);
+      console.log(res);
+    });
+  });
+  res.redirect('/');
+});
+
 module.exports = router;
